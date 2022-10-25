@@ -14,8 +14,8 @@ const Header = () => {
            <ul className=' gap-x-16'>
             <li ><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-red-400 rounded py-1 px-5' to='/'>Home</Link></li>
             <li ><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-red-400 rounded py-1 px-5' to='/courses'>Courses</Link></li>
-            <li ><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-red-400 rounded py-1 px-5'>Blog</Link></li>
-            <li ><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-red-400 rounded py-1 px-5'>Faq</Link></li>
+            <li ><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-red-400 rounded py-1 px-5' to='/blog'>Blog</Link></li>
+            <li ><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-red-400 rounded py-1 px-5' to='/faq'>Faq</Link></li>
             <li ><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-red-400 rounded py-1 px-5'>Dark Mode</Link></li>
            </ul>
         </nav>

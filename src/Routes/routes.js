@@ -6,6 +6,7 @@ import Courses from "../Pages/Courses/Courses";
 import EnrollPage from "../Pages/EnrollPage/EnrollPage";
 import SignIn from "../Pages/SignIn/SignIn";
 import Login from '../Pages/Login/Login';
+import ProtectedRoutes from "../ProtectedRoutes/ProtectedRoutes";
 
 const router = createBrowserRouter([
     {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
         {
           path: '/enroll-page/:id',
           loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`),
-          element: <EnrollPage/>  
+          element: <ProtectedRoutes><EnrollPage/></ProtectedRoutes>  
         }
       ]  
     }

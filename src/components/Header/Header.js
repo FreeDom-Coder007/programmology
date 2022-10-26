@@ -30,9 +30,9 @@ const Header = () => {
                 <li><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-cyan-400 border-rounded shadow-cyan-300 rounded py-1 px-5' to='/login'>Login</Link></li> 
                </>
              }
-             <li><button className='font-bold shadow-lg hover:bg-sky-700 text-white bg-cyan-400 border-rounded shadow-cyan-300 rounded py-1 px-5'>Dark</button></li>
+             <li><input type="checkbox" className="toggle" checked/></li>
            </ul>
-           <div className='dropdown dropdown-end'>
+           <div className='dropdown dropdown-end ml-2'>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                <div className="w-10 rounded-full">
                 <img src={user?.photoURL ? user.photoURL : "https://i.pinimg.com/280x280_RS/e6/06/f4/e606f4dabac2abc63f4bdb0a91a85250.jpg"} alt=''/>

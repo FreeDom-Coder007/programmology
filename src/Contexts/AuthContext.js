@@ -1,5 +1,5 @@
 import React from 'react';
-import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider} from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider, signOut} from 'firebase/auth'
 import app from '../Firebase/Firebase.config';
 import { createContext } from 'react';
 import { useState } from 'react';
@@ -19,11 +19,15 @@ const AuthContextProvider = ({children}) => {
         return signInWithEmailAndPassword(auth,email,password)
     }
 
+    const logOut = () => {
+        return signOut(auth)
+    }
+
     const GoogleProvider = new GoogleAuthProvider()
     const FaceBookProvider = new FacebookAuthProvider()
     const GithubProvider = new GithubAuthProvider()
 
-    const authValues = { user, setUser, createUser, Login, GoogleProvider, FaceBookProvider, GithubProvider}
+    const authValues = { user, setUser, createUser, Login, logOut, GoogleProvider, FaceBookProvider, GithubProvider}
 
     return (
         <AuthContext.Provider value={authValues}>

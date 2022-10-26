@@ -8,7 +8,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
-  const {user} = useContext(AuthContext)
+  const {user,logOut} = useContext(AuthContext)
+
+  const handleLogOut = () => {
+     logOut()
+     .then(() => {})
+     .catch(err => console.error(err))
+  }
 
   return (
     <div className='shadow-lg'>
@@ -23,7 +29,7 @@ const Header = () => {
              <li><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-cyan-400 border-rounded shadow-cyan-300 rounded py-1 px-5' to='/blog'>Blog</Link></li>
              <li><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-cyan-400 border-rounded shadow-cyan-300 rounded py-1 px-5' to='/faq'>Faq</Link></li>
              { user?.uid ? 
-               <li><button className='font-bold shadow-lg hover:bg-sky-700 text-white bg-cyan-400 border-rounded shadow-cyan-300 rounded py-1 px-5'><FontAwesomeIcon icon={faSignOutAlt}/>Logout</button></li>
+               <li><button onClick={handleLogOut} className='font-bold shadow-lg hover:bg-sky-700 text-white bg-cyan-400 border-rounded shadow-cyan-300 rounded py-1 px-5'><FontAwesomeIcon icon={faSignOutAlt}/>Logout</button></li>
                :
                <>
                 <li><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-cyan-400 border-rounded shadow-cyan-300 rounded py-1 px-5' to='/signin'>SignIn</Link></li>

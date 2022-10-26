@@ -38,10 +38,10 @@ const router = createBrowserRouter([
         {
           path: '/enroll-page/:id',
           loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`),
-          element: <ProtectedRoutes><EnrollPage/></ProtectedRoutes>  
+          element: <EnrollPage/>  
         }
       ]  
     }
 ])
-
+ 
 export default router;

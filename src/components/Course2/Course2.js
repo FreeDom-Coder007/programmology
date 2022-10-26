@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const Course2 = ({ course }) => {
   const { id, image, title, info } = course;
+  console.log(id)
 
   return (
     <div className="card w-96 glass shadow-xl">
@@ -13,9 +14,7 @@ const Course2 = ({ course }) => {
         <h2 className="card-title font-bold">{title}</h2>
         <p>{info}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-success text-white mx-auto">
-            <Link to={`/enroll-page/${id}`}>Enroll Now</Link>
-          </button>
+          <Link className="btn btn-success text-white mx-auto" to={`/enroll-page/${id}`}>Enroll Now</Link>
         </div>
       </div>
     </div>

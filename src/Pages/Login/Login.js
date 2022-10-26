@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { auth, AuthContext } from '../../Contexts/AuthContext';
 import { signInWithPopup } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Login = () => {
+    const [error, setError] = useState('')
     const {setUser,Login,GoogleProvider, FaceBookProvider, GithubProvider} = useContext(AuthContext)
 
     const handleSubmit = (e) => {
@@ -22,6 +24,12 @@ const Login = () => {
             console.log(user)
             setUser(user)
             form.reset()
+            if(user.password !== password){
+                setError("Your password is wrong")
+            }
+            else{
+                toast.success('Succesfully login')
+            }
         })
         .catch(err => console.error(err))
     }
@@ -65,6 +73,7 @@ const Login = () => {
              <label className='font-semibold' htmlFor="password">Password:</label>
              <input type="password" placeholder="Type here" name='password' className="input input-bordered input-accent w-full max-w-xs" required/>
            </div>
+           <p className='text-center text-red-500 font-semibold'>{error}</p>
            <button type='submit' className="btn-accent block mx-auto my-4 px-8 py-2 rounded-lg text-white ">Login</button>
            <p className='text-center mb-5'>Alredy have an account? <Link to='/signin' className='text text-emerald-500'>SignIn</Link></p>
            <div className="button-container">

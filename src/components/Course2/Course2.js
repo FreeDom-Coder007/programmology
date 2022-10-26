@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Course2 = ({ course }) => {
-  const { image, title, info } = course;
+  const { id, image, title, info } = course;
 
   return (
     <div className="card w-96 glass shadow-xl">
@@ -13,7 +14,7 @@ const Course2 = ({ course }) => {
         <p>{info}</p>
         <div className="card-actions justify-end">
           <button className="btn btn-success text-white mx-auto">
-            Enroll Now
+            <Link to={`/enroll-page/${id}`}>Enroll Now</Link>
           </button>
         </div>
       </div>

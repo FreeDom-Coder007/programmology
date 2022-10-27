@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext';
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook, FaGithub } from "react-icons/fa";
@@ -15,6 +15,9 @@ const SignUp = () => {
     const { setUser, createUser, updateUserProfile, GoogleProvider, FaceBookProvider, GithubProvider} = useContext(AuthContext)
     const [error, setError] = useState('')
     const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location.state?.from.pathname || '/'
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -67,6 +70,7 @@ const SignUp = () => {
         .then(result => {
             const user = result.user
             setUser(user)
+            navigate(from, {replace: true})
         })
         .catch(err => console.error(err))
     }
@@ -77,6 +81,7 @@ const SignUp = () => {
             const user = result.user
             console.log(user)
             setUser(user)
+            navigate(from, {replace: true})
         })
         .catch(err => console.error(err))
     }
@@ -87,7 +92,7 @@ const SignUp = () => {
             const user = result.user
             console.log(user)
             setUser(user)
-            navigate('/')
+            navigate(from, {replace: true})
         })
         .catch(err => console.error(err))
     }

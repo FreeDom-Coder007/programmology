@@ -4,3 +4,31 @@
     background-size: cover;
     height: 100vh;
 }
+
+@media screen and (max-width: 575px){
+    .banner{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        column-gap: 2rem;
+    }
+    .banner > div{
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    .banner > div > div {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .banner > div > div > h1{
+        font-size: medium;
+        font-weight: 500;
+    }
+    .courses-section {
+        display: flex;
+        flex-direction: column;
+        column-gap: 20px;
+        justify-content: space-between;
+    }
+    
+}

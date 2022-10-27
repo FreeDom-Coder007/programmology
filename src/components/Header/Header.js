@@ -7,11 +7,8 @@ import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
-
 const Header = () => {
   const {user,logOut} = useContext(AuthContext)
-  
-  console.log(user)
 
   const handleLogOut = () => {
      logOut()
@@ -22,11 +19,11 @@ const Header = () => {
   return (
     <div className='shadow-lg'>
         <nav className="navbar bg-base-100 container w-11/12 mx-auto">
-           <div className="flex-1">
-           <Link to='/'><img className='logo' src={logo} alt=""/></Link>
-           <Link to='/'><h1 className='font-bold text-2xl ml-6 text-emerald-500'>PROGRAMMOLOGY</h1></Link>
+           <div className="flex-1 logo">
+            <Link to='/'><img className='logo' src={logo} alt=""/></Link>
+            <Link to='/'><h1 className='font-bold text-2xl ml-6 text-emerald-500'>PROGRAMMOLOGY</h1></Link>
            </div>
-           <ul className=' gap-x-8'>
+           <ul className='gap-x-8'>
              <li><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-cyan-400 border-rounded shadow-cyan-300 rounded py-1 px-5' to='/'>Home</Link></li>
              <li><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-cyan-400 border-rounded shadow-cyan-300 rounded py-1 px-5' to='/courses'>Courses</Link></li>
              <li><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-cyan-400 border-rounded shadow-cyan-300 rounded py-1 px-5' to='/blog'>Blog</Link></li>
@@ -39,7 +36,7 @@ const Header = () => {
                 <li><Link className='font-bold shadow-lg hover:bg-sky-700 text-white bg-cyan-400 border-rounded shadow-cyan-300 rounded py-1 px-5' to='/login'>Login</Link></li> 
                </>
              }
-             <li><input type="checkbox" className="toggle" checked/></li>
+             <li className="label cursor-pointer"><input type="checkbox" className="toggle" checked /></li>
            </ul>
            <div className='dropdown dropdown-end ml-2'>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

@@ -1,3 +1,46 @@
 .logo{
     height: 80px;
 }
+
+@media screen and (max-width: 575px) {
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.50rem;
+    }
+    .logo{
+        display: flex;
+        flex-direction: column; 
+    }
+    .navbar ul{
+        column-gap: 0.25rem;
+    }
+    .navbar ul a{
+        padding-left: 0.25rem;
+        padding-right: 00.25rem;
+        font-weight: normal;
+    }
+    .navbar ul button{
+        font-weight: normal; 
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px){
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.50rem;
+    }
+    .logo{
+        display: flex;
+        flex-direction: column; 
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px){
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.50rem;
+    }
+}

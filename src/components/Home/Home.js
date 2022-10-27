@@ -24,10 +24,11 @@ const Home = () => {
                     <p className='font-extrabold'>Placement Grunted</p>
                    </div> 
                 </div>
-                <div className=' w-3/6'></div>
+                <div className=' w-3/6'>
+                </div>
             </section>
 
-            <section className='courses-section w-11/12 my-16 mx-auto flex flex-wrap justify-between'>
+            <section className='courses-section w-11/12 my-16 mx-auto flex  flex-wrap justify-between'>
                {
                 courses.map(course => <Course key={course.id} course={course}/>)
                }

@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthContext';
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook, FaGithub } from "react-icons/fa";
 import { signInWithPopup } from "firebase/auth";
 import './SignIn.css';
 import { auth } from '../../Contexts/AuthContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-const SignIn = () => {
-    const { setUser, createUser, GoogleProvider, FaceBookProvider, GithubProvider} = useContext(AuthContext)
+const SignUp = () => {
+    const { setUser, createUser, updateUserProfile, GoogleProvider, FaceBookProvider, GithubProvider} = useContext(AuthContext)
+    const [error, setError] = useState('')
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -20,23 +24,49 @@ const SignIn = () => {
         const email = form.email.value
         const password = form.password.value
         const confirmPass = form.confirmPass.value
-        console.log(fullName,photoURL,email,password,confirmPass)
+    
+        if(password !== confirmPass){
+           setError(" Password didn't match ")
+        }
+        else{
+          toast.success('Successfuly Created an account', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: true,
+            theme: 'dark',
+            });
+        }
 
         createUser(email,password)
         .then(result => {
             const user = result.user
-            console.log(user)
             setUser(user)
-            form.reset()
+            handleUpdateUserProfile(fullName,photoURL)
+            navigate('/')
         })
         .catch(err => console.error(err))
+    }
+
+    const handleUpdateUserProfile = (fullName,photoURL) => {
+       const profile = {
+          displayName: fullName,
+          photoURL: photoURL
+       }
+
+       updateUserProfile(profile)
+       .then(() => {})
+       .catch(err => console.error(err))
     }
 
     const handleGoogleSignIn = () => {
         signInWithPopup(auth, GoogleProvider)
         .then(result => {
             const user = result.user
-            console.log(user)
+            setUser(user)
         })
         .catch(err => console.error(err))
     }
@@ -46,6 +76,7 @@ const SignIn = () => {
         .then(result => {
             const user = result.user
             console.log(user)
+            setUser(user)
         })
         .catch(err => console.error(err))
     }
@@ -55,6 +86,8 @@ const SignIn = () => {
         .then(result => {
             const user = result.user
             console.log(user)
+            setUser(user)
+            navigate('/')
         })
         .catch(err => console.error(err))
     }
@@ -82,6 +115,7 @@ const SignIn = () => {
                 <div className="form-control w-full max-w-xs mx-auto mb-4">
                   <label className='font-semibold' htmlFor="confirmPass">Confirm Password:</label>
                   <input type="password" placeholder="Type here" name='confirmPass' className="input input-bordered input-accent w-full max-w-xs" required/>
+                  <p className='text-red-500 mt-2 text-center font-semibold'>{error}</p>
                 </div>
                 <button type='submit' className="btn-accent block mx-auto my-4 px-8 py-2 rounded-lg text-white ">SignIn</button>
                 <p className='text-center mb-5'>didn't have a account? <Link to='/login' className='text text-emerald-500'>SignIn</Link></p>
@@ -91,8 +125,9 @@ const SignIn = () => {
                    <button onClick={handleGithubSignIn} className="facebook-btn flex items-center justify-between my-2 mx-auto py-2 outline-1 border hover:bg-emerald-500 hover:text-white"><FaGithub className='ml-2 text-2xl'/> <span className="mr-24 font-semibold">Continue with GitHub</span></button>
                 </div>
              </form>
+             <ToastContainer/>
         </section>
     )
 }
 
-export default SignIn;
+export default SignUp;

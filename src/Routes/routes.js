@@ -4,9 +4,10 @@ import Main from "../components/Main/Main";
 import Blog from "../Pages/Blog/Blog";
 import Courses from "../Pages/Courses/Courses";
 import EnrollPage from "../Pages/EnrollPage/EnrollPage";
-import SignIn from "../Pages/SignIn/SignIn";
+import SignUp from "../Pages/SignIn/SignIn";
 import Login from '../Pages/Login/Login';
 import ProtectedRoutes from "../ProtectedRoutes/ProtectedRoutes";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/signin',
-          element: <SignIn/>  
+          element: <SignUp/>  
         },
         {
           path: '/login',
@@ -38,9 +39,13 @@ const router = createBrowserRouter([
         {
           path: '/enroll-page/:id',
           loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`),
-          element: <EnrollPage/>  
+          element: <ProtectedRoutes><EnrollPage/></ProtectedRoutes>  
         }
       ]  
+    },
+    {
+      path: '*',
+      element: <ErrorPage/>
     }
 ])
  

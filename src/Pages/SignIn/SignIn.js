@@ -30,6 +30,7 @@ const SignUp = () => {
     
         if(password !== confirmPass){
            setError(" Password didn't match ")
+           return
         }
         else{
           toast.success('Successfuly Created an account', {
@@ -41,7 +42,7 @@ const SignUp = () => {
             draggable: true,
             progress: true,
             theme: 'dark',
-            });
+            });  
         }
 
         createUser(email,password)
@@ -59,7 +60,6 @@ const SignUp = () => {
           displayName: fullName,
           photoURL: photoURL
        }
-
        updateUserProfile(profile)
        .then(() => {})
        .catch(err => console.error(err))

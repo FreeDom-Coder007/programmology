@@ -2,6 +2,7 @@ import React from 'react';
 import { FaUser, FaAsymmetrik, FaHighlighter, FaQuestion } from "react-icons/fa";
 import { Link, useLoaderData } from 'react-router-dom';
 import Course2 from '../../components/Course2/Course2';
+import './Course.css'
 
 const Courses = () => {
     const courses = useLoaderData()

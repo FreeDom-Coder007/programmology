@@ -31,7 +31,7 @@ const Login = () => {
             navigate(from, {replace: true}) 
         })
         .catch(err => {
-            setError(err)
+            setError("Wrong password!")
         })
     }
 

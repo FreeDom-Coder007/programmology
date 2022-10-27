@@ -8,6 +8,7 @@ import SignUp from "../Pages/SignIn/SignIn";
 import Login from '../Pages/Login/Login';
 import ProtectedRoutes from "../ProtectedRoutes/ProtectedRoutes";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Faq from "../Pages/Faq/Faq";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         {
           path: '/blog',
           element: <Blog/>  
+        },
+        {
+          path: '/faq',
+          element: <Faq/>
         },
         {
           path: '/signin',
